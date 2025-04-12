@@ -39,7 +39,7 @@ const Singleservice = ({ service }) => {
                     {/* Call-to-Action */}
                     <div className="text-center">
                         <Link 
-                            to={`/services/${service.name}`} 
+                            to={`/services/${service.id}`} 
                             className="rounded-lg bg-red-500 px-6 py-3 text-white shadow-lg transform hover:translate-y-1 hover:shadow-sm transition hover:bg-red-600 font-semibold">
                             View More
                         </Link>

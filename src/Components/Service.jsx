@@ -2,25 +2,29 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 const Service = () => {
-    const { name } = useParams(null);
-    const [services, setservices] = useState([]);
+    const { id } = useParams();
+    const [services, setservices] = useState();
 
     useEffect(() => {
-        fetch('services.json')
+        fetch('/services.json')
             .then(res => res.json())
             .then(data => {
-                const filterdata = data.find(service => service.name === name);
+                const filterdata = data.find(service => service.id == id);
                 setservices(filterdata);
             });
-    }, [name]);
+    }, [id]);
+
+   
 
     return (
+        
         <div className="w-11/12 mx-auto py-10 lg:w-9/12">
             {/* Service Details Section */}
             <div className="text-center mb-10">
                 <h1 className="text-5xl font-bold mb-4">{services?.name}</h1>
                 <p className="text-lg text-gray-600">{services?.description}</p>
             </div>
+    
 
             <div className="flex flex-col lg:flex-row justify-center lg:justify-between items-center gap-10">
                 {/* Service Image */}
